@@ -1,19 +1,8 @@
-import { ContactsItem } from 'components/ContactsItem/ContactsItem';
+import ContactsItem from 'components/ContactsItem/ContactsItem';
 import { ContactsListItem } from './ContactList.styled';
 import PropTypes from 'prop-types';
 
-export const ContactsList = ({
-  contactsArr,
-  normalizedFilterValue,
-  deleteContactItem,
-}) => {
-  const contactsList = normalizedFilterValue
-    ? contactsArr.filter(contact =>
-        contact.name
-          .toLowerCase()
-          .includes(normalizedFilterValue.toLowerCase().trim())
-      )
-    : contactsArr;
+const ContactsList = ({ contactsList, deleteContactItem }) => {
   return (
     <ul>
       {contactsList.map(contact => (
@@ -29,13 +18,15 @@ export const ContactsList = ({
     </ul>
   );
 };
+export default ContactsList;
 
 ContactsList.propTypes = {
-  contactsArr: PropTypes.arrayOf(
+  contactsList: PropTypes.arrayOf(
     PropTypes.shape({
-      name: PropTypes.string,
-      number: PropTypes.string,
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
     })
   ),
-  filterName: PropTypes.string,
+  deleteContactItem: PropTypes.func.isRequired,
 };

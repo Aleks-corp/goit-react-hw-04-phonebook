@@ -1,7 +1,7 @@
 import { Thumb } from './ContactsItem.styled';
 import PropTypes from 'prop-types';
 
-export const ContactsItem = ({ id, name, number, deleteContactItem }) => {
+const ContactsItem = ({ id, name, number, deleteContactItem }) => {
   return (
     <>
       <Thumb>
@@ -14,7 +14,11 @@ export const ContactsItem = ({ id, name, number, deleteContactItem }) => {
   );
 };
 
+export default ContactsItem;
+
 ContactsItem.propTypes = {
-  name: PropTypes.string,
-  number: PropTypes.string,
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
+  deleteContactItem: PropTypes.func.isRequired,
 };
